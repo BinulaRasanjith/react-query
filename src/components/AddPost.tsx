@@ -6,8 +6,7 @@ import { CREATE_POST } from '../constants';
 const AddPost = () => {
   const { setRightSide, setPostId } = useContext(State);
 
-  const handleClick = (e) => {
-    e.preventDefault();
+  const handleClick:React.MouseEventHandler<HTMLButtonElement> = (e) => {
     setRightSide(CREATE_POST)
     setPostId(null);
   }

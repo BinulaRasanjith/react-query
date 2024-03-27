@@ -37,16 +37,20 @@ export const PostsContainer = styled.div`
     background-color: #00808020;
 `;
 
+interface PostContainerProps {
+    selected?: boolean;
+}
+
 // single post container
-export const PostContainer = styled.div`
+export const PostContainer = styled.div<PostContainerProps>`
     display: block;
     background-color: white;
     width: 100%;
     padding: 10px;
     border-radius: 20px;
-    ${props => props.selected && 'box-shadow: 0 0 0 5px teal;'}
+    ${({selected}) => selected && 'box-shadow: 0 0 0 5px teal;'}
 
-    ${props => !props.selected && '&:hover {box-shadow: 0 0 0 5px #00808050;}'}
+    ${({selected}) => !selected && '&:hover {box-shadow: 0 0 0 5px #00808050;}'}
 
     &:active {
         filter: brightness(0.8);    
@@ -122,13 +126,13 @@ export const Button = styled.button`
     padding: 10px;
     text-transform: uppercase;
     background-color: white;
-    color: ${props => props.color || 'teal'};
-    border: 2px solid ${props => props.color || 'teal'};
+    color: ${props => props.color ?? 'teal'};
+    border: 2px solid ${props => props.color ?? 'teal'};
     border-radius: 10px;
 
     &:hover {
         color: white;
-        background-color: ${props => props.color || 'teal'};
+        background-color: ${props => props.color ?? 'teal'};
     }
 
     &:active {
